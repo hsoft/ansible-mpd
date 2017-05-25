@@ -1,0 +1,10 @@
+---
+- name: Ensure mpd is present
+  apt:
+    name: mpd
+    state: present
+
+- include: conf.yml
+
+- name: Ensure that mpd service is enabled and running
+  service: name=mpd state=started enabled=yes

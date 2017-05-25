@@ -1,0 +1,16 @@
+---
+- name: set music_directory conf
+  lineinfile:
+    path: "{{ mpd_conf_path }}"
+    line: "music_directory \"{{ mpd_music_directory }}\""
+    regexp: "^music_directory"
+  when: mpd_music_directory is defined
+  notify: restart mpd
+
+- name: set bind_to_address conf
+  lineinfile:
+    path: "{{ mpd_conf_path }}"
+    line: "bind_to_address \"{{ mpd_bind_to_address }}\""
+    regexp: "^bind_to_address"
+  when: mpd_bind_to_address is defined
+  notify: restart mpd
